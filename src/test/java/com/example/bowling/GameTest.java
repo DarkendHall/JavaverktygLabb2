@@ -41,4 +41,18 @@ public class GameTest {
 
         assertThat(result).isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("Checking score after rolling a spare and then rolling again should add correct bonus")
+    void scoreAfterSpare() {
+        Game game = new Game();
+
+        game.roll(7);
+        game.roll(3);
+        game.roll(6);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(22);
+    }
 }
