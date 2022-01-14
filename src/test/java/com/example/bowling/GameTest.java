@@ -28,4 +28,17 @@ public class GameTest {
 
         assertThat(result).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("score after rolling two times should return correct score")
+    void scoreAfterMultipleRolls() {
+        Game game = new Game();
+
+        game.roll(3);
+        game.roll(3);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(6);
+    }
 }
