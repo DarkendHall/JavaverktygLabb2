@@ -55,4 +55,18 @@ public class GameTest {
 
         assertThat(result).isEqualTo(22);
     }
+
+    @Test
+    @DisplayName("Checking score after rolling three times should not add a bonus")
+    void scoreAfterThreeRolls() {
+        Game game = new Game();
+
+        game.roll(7);
+        game.roll(2);
+        game.roll(6);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(15);
+    }
 }
