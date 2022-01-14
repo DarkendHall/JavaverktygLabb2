@@ -69,4 +69,18 @@ public class GameTest {
 
         assertThat(result).isEqualTo(15);
     }
+
+    @Test
+    @DisplayName("Checking score after rolling a strike should add correct bonus")
+    void scoreAfterStrike() {
+        Game game = new Game();
+
+        game.roll(10);
+        game.roll(6);
+        game.roll(3);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(28);
+    }
 }
