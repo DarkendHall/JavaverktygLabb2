@@ -16,4 +16,16 @@ public class GameTest {
 
         assertThat(result).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("score after roll should return correct score")
+    void scoreAfterRoll() {
+        Game game = new Game();
+
+        game.roll(3);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(3);
+    }
 }
