@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GameTest {
 
     @Test
-    @DisplayName("score should return current score")
+    @DisplayName("Checking score should return current score")
     void rollShouldAddToScore() {
         Game game = new Game();
 
@@ -18,7 +18,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("score after roll should return correct score")
+    @DisplayName("Checking score after roll should return correct score")
     void scoreAfterRoll() {
         Game game = new Game();
 
@@ -30,7 +30,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("score after rolling two times should return correct score")
+    @DisplayName("Checking score after rolling two times should return correct score")
     void scoreAfterMultipleRolls() {
         Game game = new Game();
 
