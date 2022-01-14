@@ -2,9 +2,13 @@ package com.example.bowling;
 
 public class Game {
 
+    private boolean lastFrameWasSpare = false;
+
     private boolean lastFrameWasStrike = false;
 
     private int strikeBonus = 0;
+
+    private int spareBonus = 0;
 
     private int frameScore = 0;
 
@@ -23,11 +27,16 @@ public class Game {
             score += strikeBonus;
         }
 
-        if (rolls == 2) {
-            if (frameScore == 10) {
-                rolls = 0;
-                score += pins;
-            }
+        if (lastFrameWasSpare) {
+            spareBonus += pins;
+            lastFrameWasSpare = false;
+            score += spareBonus;
+        }
+
+        if (rolls == 2 && frameScore == 10) {
+            rolls = 0;
+            lastFrameWasSpare = true;
+            score += pins;
             frameScore = 0;
         }
 
@@ -35,6 +44,7 @@ public class Game {
             rolls = 0;
             strikeBonus += pins;
             lastFrameWasStrike = true;
+            frameScore = 0;
         }
 
         frameScore += pins;
