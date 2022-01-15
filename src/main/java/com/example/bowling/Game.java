@@ -25,6 +25,7 @@ public class Game {
             strikeBonus += pins;
             lastFrameWasStrike = false;
             score += strikeBonus;
+            strikeBonus = 0;
         }
 
         if (lastFrameWasSpare) {
