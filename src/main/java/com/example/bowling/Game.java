@@ -1,17 +1,11 @@
 package com.example.bowling;
 
 public class Game {
-
     private boolean lastFrameWasStrike = false;
-
     private int frameCount = 0;
-
     private int strikeBonus = 0;
-
     private int frameScore = 0;
-
     private int rolls = 0;
-
     private int score = 0;
 
     public int score() {
@@ -19,31 +13,31 @@ public class Game {
     }
 
     public void roll(int pins) {
-
-        if (rolls == 3)
+        if (gameEnded(pins))
             return;
 
-        if (frameCount == 9){
-            frameScore += pins;
-            score += pins;
-            rolls++;
-            return;
-        }
+        wasLastFrameStrike(pins);
 
-        if (lastFrameWasStrike) {
-            strikeBonus += pins;
-            lastFrameWasStrike = false;
-            score += strikeBonus;
-            strikeBonus = 0;
-        }
+        isSpare(pins);
 
-        if (rolls == 2 && frameScore == 10) {
+        isStrike(pins);
+
+        isEndOfFrame();
+
+        frameScore += pins;
+        score += pins;
+        rolls++;
+    }
+
+    private void isEndOfFrame() {
+        if (rolls == 2) {
             rolls = 0;
-            score += pins;
             frameScore = 0;
             frameCount++;
         }
+    }
 
+    private void isStrike(int pins) {
         if (rolls == 1 && frameScore == 10) {
             rolls = 0;
             strikeBonus += pins;
@@ -51,15 +45,36 @@ public class Game {
             frameScore = 0;
             frameCount++;
         }
+    }
 
-        if (rolls == 2) {
+    private void isSpare(int pins) {
+        if (rolls == 2 && frameScore == 10) {
             rolls = 0;
+            score += pins;
             frameScore = 0;
             frameCount++;
         }
+    }
 
-        frameScore += pins;
-        score += pins;
-        rolls++;
+    private boolean gameEnded(int pins) {
+        if (rolls == 3)
+            return true;
+
+        if (frameCount == 9){
+            frameScore += pins;
+            score += pins;
+            rolls++;
+            return true;
+        }
+        return false;
+    }
+
+    private void wasLastFrameStrike(int pins) {
+        if (lastFrameWasStrike) {
+            strikeBonus += pins;
+            lastFrameWasStrike = false;
+            score += strikeBonus;
+            strikeBonus = 0;
+        }
     }
 }
