@@ -20,6 +20,9 @@ public class Game {
 
     public void roll(int pins) {
 
+        if (rolls == 3)
+            return;
+
         if (frameCount == 9){
             frameScore += pins;
             score += pins;
