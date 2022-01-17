@@ -4,6 +4,8 @@ public class Game {
 
     private boolean lastFrameWasStrike = false;
 
+    private int frameCount = 0;
+
     private int strikeBonus = 0;
 
     private int frameScore = 0;
@@ -17,6 +19,14 @@ public class Game {
     }
 
     public void roll(int pins) {
+
+        if (frameCount == 9){
+            frameScore += pins;
+            score += pins;
+            rolls++;
+            return;
+        }
+
         if (lastFrameWasStrike) {
             strikeBonus += pins;
             lastFrameWasStrike = false;
@@ -28,6 +38,7 @@ public class Game {
             rolls = 0;
             score += pins;
             frameScore = 0;
+            frameCount++;
         }
 
         if (rolls == 1 && frameScore == 10) {
@@ -35,6 +46,13 @@ public class Game {
             strikeBonus += pins;
             lastFrameWasStrike = true;
             frameScore = 0;
+            frameCount++;
+        }
+
+        if (rolls == 2) {
+            rolls = 0;
+            frameScore = 0;
+            frameCount++;
         }
 
         frameScore += pins;
