@@ -57,10 +57,9 @@ public class Game {
     }
 
     private boolean gameEnded(int pins) {
-        if (rolls == 3)
-            return true;
-
-        if (frameCount == 9){
+        if (frameCount == 9) {
+            if (rolls > 2 || (rolls >= 2 && frameScore < 10))
+                return true;
             frameScore += pins;
             score += pins;
             rolls++;
