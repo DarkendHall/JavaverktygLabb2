@@ -33,4 +33,15 @@ class EmployeeRepositoryImplTest {
 
         assertThat(result).contains(employee);
     }
+
+    @Test
+    @DisplayName("You should be able to pass a list into the constructor")
+    void listInConstructor() {
+        Employee employee = new Employee("test", 1);
+        employeeRepository = new EmployeeRepositoryImpl(List.of(employee));
+
+        var result = employeeRepository.findAll();
+
+        assertThat(result).contains(employee);
+    }
 }
