@@ -23,10 +23,9 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public Employee save(Employee e) {
-        if (!employees.contains(e))
-            if (employees.stream()
-                    .noneMatch(emp -> Objects.equals(emp.getId(), e.getId())))
-                employees.add(e);
+        if ((employees.stream()
+                .noneMatch(emp -> Objects.equals(emp.getId(), e.getId()))))
+            employees.add(e);
         return e;
     }
 }
