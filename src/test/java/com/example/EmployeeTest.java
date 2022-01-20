@@ -61,4 +61,16 @@ class EmployeeTest {
         assertThat(result).isFalse();
     }
 
+    @Test
+    @DisplayName("isPaid should return true after setPaid with value true as argument")
+    void setPaidEmployee() {
+        Employee employee = new Employee("Marcus", 100);
+
+        employee.setPaid(true);
+
+        var result = employee.isPaid();
+
+        assertThat(result).isTrue();
+    }
+
 }
