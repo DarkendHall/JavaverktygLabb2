@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
@@ -22,7 +23,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public Employee save(Employee e) {
-        employees.add(e);
+        if (!employees.contains(e))
+            if (employees.stream()
+                    .noneMatch(emp -> Objects.equals(emp.getId(), e.getId())))
+                employees.add(e);
         return e;
     }
 }
