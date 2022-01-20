@@ -13,11 +13,11 @@ public class Game {
     }
 
     public void roll(int pins) {
-        if (gameEnded(pins))
+        if (is10thFrame(pins))
             return;
         wasLastFrameStrike(pins);
-        isSpare(pins);
-        isStrike(pins);
+        ifSpare(pins);
+        ifStrike(pins);
         isEndOfFrame();
 
         frameScore += pins;
@@ -33,7 +33,7 @@ public class Game {
         }
     }
 
-    private void isStrike(int pins) {
+    private void ifStrike(int pins) {
         if (rolls == 1 && frameScore == 10) {
             rolls = 0;
             strikeBonus += pins;
@@ -43,7 +43,7 @@ public class Game {
         }
     }
 
-    private void isSpare(int pins) {
+    private void ifSpare(int pins) {
         if (rolls == 2 && frameScore == 10) {
             rolls = 0;
             score += pins;
@@ -52,7 +52,7 @@ public class Game {
         }
     }
 
-    private boolean gameEnded(int pins) {
+    private boolean is10thFrame(int pins) {
         if (frameCount == 9) {
             if (rolls > 2 || (rolls >= 2 && frameScore < 10))
                 return true;
