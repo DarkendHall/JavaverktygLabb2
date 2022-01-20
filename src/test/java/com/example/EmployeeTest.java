@@ -18,6 +18,18 @@ class EmployeeTest {
     }
 
     @Test
+    @DisplayName("setId should update ID")
+    void setIdEmployee() {
+        Employee employee = new Employee("Narcus", 100);
+
+        employee.setId("Marcus");
+
+        var result = employee.getId();
+
+        assertThat(result).isEqualTo("Marcus");
+    }
+
+    @Test
     @DisplayName("getSalary should return correct salary")
     void getSalaryEmployee() {
         Employee employee = new Employee("Marcus", 100);
