@@ -254,4 +254,33 @@ public class GameTest {
 
         assertThat(result).isEqualTo(147);
     }
+
+    @Test
+    @DisplayName("Full game with only strikes until 10th frame should return correct score")
+    void fullGameStrikesOnlyUntil10thFrame() {
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(1);
+        game.roll(1);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(245);
+    }
 }

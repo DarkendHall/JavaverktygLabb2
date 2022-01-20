@@ -15,13 +15,9 @@ public class Game {
     public void roll(int pins) {
         if (gameEnded(pins))
             return;
-
         wasLastFrameStrike(pins);
-
         isSpare(pins);
-
         isStrike(pins);
-
         isEndOfFrame();
 
         frameScore += pins;
@@ -63,6 +59,7 @@ public class Game {
             frameScore += pins;
             score += pins;
             rolls++;
+            wasLastFrameStrike(pins);
             return true;
         }
         return false;
