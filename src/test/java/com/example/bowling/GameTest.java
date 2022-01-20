@@ -283,4 +283,34 @@ public class GameTest {
 
         assertThat(result).isEqualTo(245);
     }
+
+    @Test
+    @DisplayName("Full game with only strike should return correct score")
+    void fullGameStrikesOnly() {
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
+        var result = game.score();
+
+        assertThat(result).isEqualTo(300);
+    }
 }
