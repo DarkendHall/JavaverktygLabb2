@@ -44,4 +44,18 @@ class EmployeeRepositoryImplTest {
 
         assertThat(result).contains(employee);
     }
+
+    @Test
+    @DisplayName("save should add to list when using constructor that takes a list as argument")
+    void saveOnListWhenInitializedWithConstructorArgument() {
+        Employee employee = new Employee("test", 1);
+        Employee employee1 = new Employee("test1", 1);
+        employeeRepository = new EmployeeRepositoryImpl(List.of(employee));
+
+        employeeRepository.save(employee1);
+
+        var result = employeeRepository.findAll();
+
+        assertThat(result).containsExactly(employee, employee1);
+    }
 }
