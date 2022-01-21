@@ -25,4 +25,21 @@ class EmployeeManagerTest {
         assertThat(result).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("If payEmployee throws an exception it should not increment")
+    void payEmployeeOnException() {
+        EmployeeRepository employeeRepository = new EmployeeRepositoryStub();
+        BankService bankService = new BankServiceStub();
+        EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
+
+
+        var sizeOfEmployeeList = employeeRepository.findAll()
+                .size();
+
+        var employeesPaid = employeeManager.payEmployees();
+
+        assertThat(employeesPaid).isEqualTo(1);
+        assertThat(sizeOfEmployeeList).isEqualTo(2);
+    }
+
 }
