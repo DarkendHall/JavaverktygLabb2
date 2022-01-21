@@ -16,7 +16,7 @@ public class GameTest {
 
 
     @Test
-    @DisplayName("Checking score should return current score")
+    @DisplayName("Score should return current score")
     void rollShouldAddToScore() {
         var result = game.score();
 
@@ -24,7 +24,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after roll should return correct score")
+    @DisplayName("Score after roll")
     void scoreAfterRoll() {
         game.roll(3);
 
@@ -34,7 +34,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling two times should return correct score")
+    @DisplayName("Score after rolling two times")
     void scoreAfterMultipleRolls() {
         game.roll(3);
         game.roll(3);
@@ -45,7 +45,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling a spare and then rolling again should add correct bonus")
+    @DisplayName("Spare bonus")
     void scoreAfterSpare() {
         game.roll(7);
         game.roll(3);
@@ -57,7 +57,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling three times should not add a bonus")
+    @DisplayName("Score after three rolls should not add bonus")
     void scoreAfterThreeRolls() {
         game.roll(7);
         game.roll(2);
@@ -69,7 +69,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling a strike should add correct bonus")
+    @DisplayName("Strike bonus")
     void scoreAfterStrike() {
         game.roll(10);
         game.roll(6);
@@ -81,7 +81,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling a strike then a spare should add correct bonus")
+    @DisplayName("Score after strike then spare")
     void scoreAfterStrikeThenSpare() {
         game.roll(10);
 
@@ -96,7 +96,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling a double strike should add correct bonus")
+    @DisplayName("Correct bonus after double strike")
     void scoreAfterDoubleStrike() {
         game.roll(10);
 
@@ -111,7 +111,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after rolling two strike then a spare should add correct bonus")
+    @DisplayName("Double strike then spare")
     void scoreAfterDoubleStrikeFollowedBySpare() {
         game.roll(10);
 
@@ -128,7 +128,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after two strikes then a spare then another strike should add correct bonus.")
+    @DisplayName("Double strikes then spare then another strike")
     void scoreAfterTwoStrikeThenSpareThenStrike() {
         game.roll(10);
 
@@ -148,7 +148,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Checking score after a game of bowling")
+    @DisplayName("Score after full game")
     void scoreAfterFullGame() {
         game.roll(10);
 
@@ -183,7 +183,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Rolling after a full game should not affect score")
+    @DisplayName("Roll after game")
     void rollingAfterAFullGameShouldNotAffectScore() {
         game.roll(10);
 
@@ -220,7 +220,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Rolling after a full game should not affect score when not strike or spare in frame 10")
+    @DisplayName("Rolling after a full game, no spare/strike in 10th frame")
     void rollingAfterAFullGameShouldNotAffectScoreNoStrikeOrSpareLastFrame() {
         game.roll(10);
 
@@ -256,7 +256,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Full game with only strikes until 10th frame should return correct score")
+    @DisplayName("Only strikes until 10th frame should add correct bonus")
     void fullGameStrikesOnlyUntil10thFrame() {
         game.roll(10);
 
@@ -285,7 +285,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Full game with only strike should return correct score")
+    @DisplayName("Only strike should return 300")
     void fullGameStrikesOnly() {
         game.roll(10);
 
@@ -315,7 +315,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Full game with only spares should return correct score")
+    @DisplayName("Only spares")
     void fullGameSparesOnly() {
         game.roll(7);
         game.roll(3);
