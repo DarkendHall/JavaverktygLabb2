@@ -258,23 +258,7 @@ public class GameTest {
     @Test
     @DisplayName("Only strikes until 10th frame should add correct bonus")
     void fullGameStrikesOnlyUntil10thFrame() {
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
+        rolls(9, 10);
 
         game.roll(1);
         game.roll(1);
@@ -287,27 +271,7 @@ public class GameTest {
     @Test
     @DisplayName("Only strike should return 300")
     void fullGameStrikesOnly() {
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
+        rolls(12, 10);
 
         var result = game.score();
 
