@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,17 +23,6 @@ class EmployeeManagerTest {
         var result = employeeManager.payEmployees();
 
         assertThat(result).isEqualTo(2);
-    }
-
-    @Test
-    @DisplayName("payEmployee with null employee should throw NullPointerException")
-    void payEmployeeWithNullValue() {
-        EmployeeRepository employeeRepository = new EmployeeRepositoryStub();
-        BankService bankService = new BankServiceStub();
-        EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
-
-        assertThatThrownBy(employeeManager::payEmployees).isInstanceOf(
-                NullPointerException.class);
     }
 
 }
