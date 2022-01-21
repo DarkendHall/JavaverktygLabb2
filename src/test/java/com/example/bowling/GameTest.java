@@ -269,7 +269,7 @@ public class GameTest {
     }
 
     @Test
-    @DisplayName("Only strike should return 300")
+    @DisplayName("Only strikes should return 300")
     void fullGameStrikesOnly() {
         rolls(12, 10);
 
