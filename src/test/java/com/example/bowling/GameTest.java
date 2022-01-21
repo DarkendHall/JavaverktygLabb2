@@ -352,4 +352,10 @@ public class GameTest {
 
         assertThat(result).isEqualTo(139);
     }
+
+    private void rolls(int times, int pins) {
+        for (int i = 0; i < times; i++) {
+            game.roll(pins);
+        }
+    }
 }
