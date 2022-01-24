@@ -22,7 +22,17 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public Employee save(Employee e) {
+        employees.stream()
+                .filter(employee -> employee.getId()
+                        .equals(e.getId()))
+                .findFirst()
+                .ifPresent(this::removeFromList);
         employees.add(e);
+
         return e;
+    }
+
+    private void removeFromList(Employee e) {
+        employees.remove(e);
     }
 }

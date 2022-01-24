@@ -58,4 +58,19 @@ class EmployeeRepositoryImplTest {
 
         assertThat(result).containsExactly(employee, employee1);
     }
+
+    @Test
+    @DisplayName("save with employee with same id on the list should replace existing employee")
+    void saveWithEmployeeIDAlreadyInList() {
+        Employee employee = new Employee("test", 1);
+        Employee employee1 = new Employee("test", 2);
+        employeeRepository = new EmployeeRepositoryImpl();
+
+        employeeRepository.save(employee);
+        employeeRepository.save(employee1);
+
+        var result = employeeRepository.findAll();
+
+        assertThat(result).containsExactly(employee1);
+    }
 }
