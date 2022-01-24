@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-    List<Employee> employees;
+    private final List<Employee> employees;
 
     public EmployeeRepositoryImpl() {
         this.employees = new ArrayList<>();
