@@ -26,7 +26,7 @@ class EmployeeManagerTest {
     }
 
     @Test
-    @DisplayName("If payEmployee throws an exception it should not increment")
+    @DisplayName("If payEmployee encounters an exception it should not increment")
     void payEmployeeOnException() {
         EmployeeRepository employeeRepository = new EmployeeRepositoryStub();
         BankService bankService = new BankServiceStub();
