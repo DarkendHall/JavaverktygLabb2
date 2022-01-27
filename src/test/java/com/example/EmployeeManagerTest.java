@@ -32,14 +32,14 @@ class EmployeeManagerTest {
         BankService bankService = new BankServiceStub();
         EmployeeManager employeeManager = new EmployeeManager(employeeRepository, bankService);
 
-
-        var sizeOfEmployeeList = employeeRepository.findAll()
-                .size();
-
         var employeesPaid = employeeManager.payEmployees();
+        var employees = employeeRepository.findAll();
 
         assertThat(employeesPaid).isEqualTo(1);
-        assertThat(sizeOfEmployeeList).isEqualTo(2);
+        assertThat(employees.get(0)
+                .isPaid()).isTrue();
+        assertThat(employees.get(1)
+                .isPaid()).isFalse();
     }
 
 }
